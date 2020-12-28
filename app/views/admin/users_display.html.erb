@@ -1,0 +1,60 @@
+
+<form action="query_usersAction" method="post" class="w3-container">
+    <div class="custom-select" style="width:200px;">
+        <select name="pasirinkta_grupe">
+            <option value="0">Pasirinkite grupe</option>
+            <%for i in 0..@groups_list.length-1%>
+            <option name value=<%=@groups_list[i].id%>><%=@groups_list[i].pavadinimas%></option>
+            <%end%>
+        </select>
+    </div>
+    <label class="w3-text-blue"><b>Paieskos raktazodis:</b></label>
+    <input name="raktazodis" class="w3-input w3-border" type="text" ><br>
+        <button type ="submit" class="w3-btn w3-blue">Ieskoti</button>
+</form>
+
+<%if @msg!=nil then%>
+    <%for i in 0..@msg.length-1%>
+        <%for j in 0..@students.length-1%>
+            <%if @students[j].id==@msg[i].to_i then%>
+
+                <div class="w3-card w3-white card-padding">
+                    <div class="inline"> <!-- Aprasai -->
+                        <p class="data_allign_right">Grupe:</p>
+                        <p class="data_allign_right">Vardas:</p>
+                        <p class="data_allign_right">Pavarde:</p>
+                        <p class="data_allign_right">El. pastas:</p>
+                        <p class="data_allign_right">Slaptazodis:</p>
+                    </div> <!-- Reiksmes -->
+                    <div class="inline">
+                        <p class="data_allign_left"><%=Group.find_by(id: @students[j].group_id).pavadinimas%> </p>
+                        <p class="data_allign_left"><%=@students[j].vardas%></p>
+                        <p class="data_allign_left"><%=@students[j].pavarde%></p>
+                        <p class="data_allign_left"><%=@students[j].elpastas%></p>
+                        <p class="data_allign_left"><%=@students[j].slaptazodis%></p>
+                    </div>
+                    <div class="inline"> <!-- Mygtukai -->
+                        <form action="update_userAction" method="post">
+                            <input type = "hidden" name = "student_id" value = <%=@students[j].id%> />
+                            <button type="submit" class="w3-button w3-black">Redaguoti</button>
+                        </form><br>
+                        <form action="delete_userAction" method="post">
+                            <input type = "hidden" name = "student_id" value = <%=@students[j].id%> />
+                            <button type="submit" class="w3-button w3-black">Istrinti</button>
+                        </form>
+                    </div>
+                </div>
+
+
+
+                
+            <%end%>
+        <%end%>
+    <%end%>
+<%else%>
+<%if @msg=='dp' then%>
+        <h2>Duomenys pakeisti sekmingai</h2>
+    <%else%>
+        <h2>Naudotoju nerasta</h2>
+    <%end%>
+<%end%> 

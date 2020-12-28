@@ -1,0 +1,11 @@
+<%if @msg=="Grupe tokiu pavadinimu jau egzistuoja." || @msg=="Prasome ivesti pavadinima" then%>
+    <h2 class="w3-text-red"><%=@msg%></h2>
+<%else%>
+    <h2 class="w3-text-green"><%=@msg%></h2>
+<%end%>
+
+<form action="create_groupAction" method="post" class="w3-container">
+    <label class="w3-text-blue"><b>Grupes pavadinimas</b></label>
+    <input class="w3-input w3-border" type="text" name="new_group" required>
+    <button type="submit" class="w3-btn w3-blue">Prideti</button>
+</form>

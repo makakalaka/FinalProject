@@ -1,0 +1,18 @@
+<%if @msg=="nil" then%>
+<div>
+<h2 class="w3-text-red">Naudotojas nerastas</h2>
+</div>
+<%end%>
+
+<form action="login_user" method="post">
+<label class="w3-text-blue"><b>Vardas</b></label>
+<input name="name" class="w3-input w3-border" type="text" required>
+<label class="w3-text-blue"><b>Pavarde</b></label>
+<input name="surname" class="w3-input w3-border" type="text" required>
+<label class="w3-text-blue"><b>Slaptazodis</b></label>
+<input name="password" class="w3-input w3-border" type="password" required>
+<button type ="submit" class="w3-btn w3-blue">Prisijungti</button>
+</form>
+
+
+

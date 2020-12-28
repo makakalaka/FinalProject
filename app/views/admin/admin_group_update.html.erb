@@ -1,0 +1,10 @@
+
+<h2 class="space_left">Keiciama grupe pavadinimu: <%=@msg%></h2>
+<div class="groups_container">
+    <form action="confirm_updateAction" method="post">
+        <label class="w3-text-blue"><b>Iveskite nauja grupes pavadinima</b></label>
+        <input name="group_name" type="hidden" value=<%=@msg%> />
+        <input name="new_name" class="w3-input w3-border" type="text" required>
+        <button type="submit" class="w3-button w3-black">Naujinti</button>
+    </form>
+</div>

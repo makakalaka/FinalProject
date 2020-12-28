@@ -1,0 +1,38 @@
+// Place all the styles related to the admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+    .groups_container {
+        background-color: rgb(206, 206, 206);
+        color: white;
+        border: 2px solid black;
+        margin: 20px;
+        padding: 20px;
+        width: 50%;
+    }
+
+    .data_allign_right{
+        text-align: right;
+        color: black;
+    }
+    .data_allign_left{
+        text-align: left;
+        color: black;
+    }
+
+    .right_float{
+        float: right;
+    }
+
+    .space_left{
+        margin-left: 20px;
+    }
+    .inline { 
+        display: inline-block; 
+        /*border: 1px solid red; */
+        margin:10px;
+        }
+
+    .card-padding{
+        margin-top: 5px;
+    }

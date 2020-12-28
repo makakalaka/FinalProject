@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FinalProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <h1 class="header">Virtuali mokymosi aplinka</h1>
+    <%if session[:user]!=nil then%>
+      <%if Group.find_by(id:session[:user]['group_id']).pavadinimas=="Admin" then%>
+          <h2>Administratorius <%=session[:user]['vardas']%> <%=session[:user]['pavarde']%></h2>
+          <div class="w3-bar w3-border w3-black">
+            <a href="create_group" class="w3-bar-item w3-button w3-mobile">Kurti nauja grupe</a>
+            <a href="../admin/groups_display" class="w3-bar-item w3-button w3-mobile">Grupiu perziura</a>
+            <a href="create_user" class="w3-bar-item w3-button w3-mobile">Kurti nauja naudotoja</a>
+            <a href="users_display" class="w3-bar-item w3-button w3-mobile">Naudotoju perziura</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Naujas dalykas</a>
+            <form action="../user/logout" method="post">
+              <div class="topnav-right">
+                <button type="submit"  class="w3-bar-item w3-button w3-mobile">Atsijungti</button>
+              </div>
+            </form>
+          </div>
+      <%else%>
+        <%if Group.find_by(id:session[:user]['group_id']).pavadinimas=="Destytojas" then%>
+          <h2>Destytojas <%=session[:user]['vardas']%> <%=session[:user]['pavarde']%></h2>
+          <div class="w3-bar w3-border w3-black">
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Pazymiu perziura</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">func</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">func</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">func</a>
+            <form action="../user/logout" method="post">
+              <div class="topnav-right">
+                <button type="submit"  class="w3-bar-item w3-button w3-mobile">Atsijungti</button>
+              </div>
+            </form>
+          </div>
+        <%else%>
+          <h2>Studentas <%=session[:user]['vardas']%> <%=session[:user]['pavarde']%></h2>
+          <div class="w3-bar w3-border w3-black">
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Tvarkarastis</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Pazymiai</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Mano paskyra></a>
+            <form action="../user/logout" method="post">
+              <div class="topnav-right">
+                <button type="submit"  class="w3-bar-item w3-button w3-mobile">Atsijungti</button>
+              </div>
+            </form>
+          </div>
+        <%end%>
+      <%end%>
+    <%else%>
+      <div class="w3-bar w3-border w3-black">
+        <div class="topnav-right">
+          <a href="../user/login" class="w3-bar-item w3-button w3-mobile right_allign">Prisijungti</a>
+        </div>
+      </div> 
+    <%end%>
+
+    <%= yield %>
+      
+  </body>
+</html>

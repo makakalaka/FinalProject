@@ -1,0 +1,29 @@
+<h2 class="space_left">Naujas naudotojas</h2>
+<div class="groups_container">
+<form action="create_userAction" method="post" class="w3-container">
+    <div class="custom-select" style="width:200px;">
+    <select name="pasirinkta_grupe" required>
+        <option value="0">Pasirinkite grupe</option>
+        <%for i in 0..@groups_list.length-1%>
+        <option name value=<%=@groups_list[i].id%>><%=@groups_list[i].pavadinimas%></option>
+        <%end%>
+    </select>
+    </div>
+
+    <label class="w3-text-blue"><b>Vardas</b></label>
+    <input name="vardas" class="w3-input w3-border" type="text" required>
+    <label class="w3-text-blue"><b>Pavarde</b></label>
+    <input name="pavarde" class="w3-input w3-border" type="text" required><br>
+    <label class="w3-text-blue" for="birthday"><b>Gimimo data</b></label><br>
+    <input type="date" id="birthday" name="gimimodata" required><br><br>
+    <label class="w3-text-blue"><b>El. pastas</b></label>
+    <input name="elpastas" class="w3-input w3-border" type="text" required>
+    <label class="w3-text-blue"><b>Slaptazodis</b></label>
+    <input name="slaptazodis" class="w3-input w3-border" type="password" required>
+    <label class="w3-text-blue"><b>Pakartoti slaptazodi</b></label>
+    <input name="slaptazodis2" class="w3-input w3-border" type="password" required>
+    <button type ="submit" class="w3-btn w3-blue">Registruoti</button>
+</form>
+<%=@msg%>
+</div>
+

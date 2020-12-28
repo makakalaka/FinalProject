@@ -1,0 +1,45 @@
+   <h2 class="w3-text-green space_left"><%=@msg%></h2>
+   <h2 class="space_left">Visos grupes duomenu bazeje:</h2>
+    <div class="groups_container">
+        <%for i in 0..@groups.length-1%>
+                <div class="w3-card w3-white card-padding">
+                    <div class="inline"> <!-- Aprasai -->
+                        <p class="data_allign_right">Grupe:</p>
+
+                        <%if @groups[i].pavadinimas=="Admin" then%>
+                            <p class="data_allign_right">Administratoriu skaicius:</p>
+                        <%else%>
+                            <p class="data_allign_right">Studentu skaicius:</p>
+                        <%end%>
+                        <p class="data_allign_right">Sukurta:</p>
+                        <p class="data_allign_right">Naujinta:</p>
+                    </div> <!-- Reiksmes -->
+                    <div class="inline">
+                        <p class="data_allign_left"><%=@groups[i].pavadinimas%> </p>
+                        <p class="data_allign_left"><%=@groups[i].students.count%></p>
+                        <p class="data_allign_left"><%=@groups[i].created_at%></p>
+                        <p class="data_allign_left"><%=@groups[i].updated_at%></p>
+                    </div>
+                    <div class="inline"> <!-- Mygtukai -->
+                        <form action="update_groupAction" method="post">
+                            <input type = "hidden" name = "group_name" value = <%=@groups[i].pavadinimas%> />
+                            <button type="submit" class="w3-button w3-black">Redaguoti</button>
+                        </form><br>
+                        <form action="delete_groupAction" method="post">
+                            <input type = "hidden" name = "group_name" value = <%=@groups[i].pavadinimas%> />
+                            <button type="submit" class="w3-button w3-black">Istrinti</button>
+                        </form>
+                    </div>
+                </div>
+        <%end%>
+    </div>
+
+<script>
+    function myFunction() {
+        if(confirm('Successful Message')){
+             window.location.reload();}
+             else
+             {return false; }
+        
+    }
+</script>

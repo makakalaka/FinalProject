@@ -1,0 +1,21 @@
+    <form action="update_userAction2" method="post" class="w3-container">
+        <div class="custom-select" style="width:200px;">
+        <select name="pasirinkta_grupe" required>
+            <option name value=<%=@naudotojo_grupe.id%>><%=@naudotojo_grupe.pavadinimas%></option>
+            <%for i in 0..@groups_list.length-1%>
+            <option name value=<%=@groups_list[i].id%>><%=@groups_list[i].pavadinimas%></option>
+            <%end%>
+        </select>
+        </div>
+        
+        <input name="stud_id" class="w3-input w3-border" type="hidden" value=<%=@naudotojas.id%>>
+        <label class="w3-text-blue"><b>Vardas</b></label>
+        <input name="vardas" class="w3-input w3-border" type="text" required value=<%=@naudotojas.vardas%>>
+        <label class="w3-text-blue"><b>Pavarde</b></label>
+        <input name="pavarde" class="w3-input w3-border" type="text" required value=<%=@naudotojas.pavarde%>>
+        <label class="w3-text-blue"><b>El. pastas</b></label>
+        <input name="el_pastas" class="w3-input w3-border" type="text" required value=<%=@naudotojas.elpastas%>>
+        <label class="w3-text-blue"><b>Slaptazodis</b></label>
+        <input name="slaptazodis" class="w3-input w3-border" type="text" required value=<%=@naudotojas.slaptazodis%>>
+        <button type ="submit" class="w3-btn w3-blue">Naujinti duomenis</button>
+    </form>
